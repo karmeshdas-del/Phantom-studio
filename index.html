@@ -4,485 +4,810 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PHANTOM STUDIO | Creative Editing</title>
+<title>PHANTOM STUDIO | Karmesh</title>
 
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
 }
 
-html {
-    scroll-behavior: smooth;
+html{
+  scroll-behavior:smooth;
 }
 
-body {
-    background: #050505;
-    color: #ffffff;
-    font-family: Arial, sans-serif;
+body{
+  background:#050505;
+  color:#f5f5f5;
+  font-family:Arial,Helvetica,sans-serif;
 }
 
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 7%;
-    border-bottom: 1px solid #222;
-    background: #080808;
+:root{
+  --silver:#c8c8c8;
+  --white:#fff;
+  --dark:#050505;
+  --card:#101010;
+  --border:#252525;
 }
 
-.logo {
-    font-size: 22px;
-    font-weight: bold;
-    letter-spacing: 4px;
+a{
+  color:inherit;
+  text-decoration:none;
 }
 
-.logo span {
-    color: #999;
+nav{
+  position:sticky;
+  top:0;
+  z-index:999;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:18px 7%;
+  background:rgba(5,5,5,.92);
+  backdrop-filter:blur(15px);
+  border-bottom:1px solid #252525;
 }
 
-nav a {
-    color: white;
-    text-decoration: none;
-    font-size: 13px;
+.logo{
+  font-size:20px;
+  font-weight:900;
+  letter-spacing:3px;
 }
 
-.hero {
-    min-height: 90vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 30px 20px;
-    background: radial-gradient(circle, #252525 0%, #050505 65%);
+.logo span{
+  color:#888;
 }
 
-.hero small {
-    color: #aaa;
-    letter-spacing: 5px;
-    margin-bottom: 20px;
+.navlinks{
+  display:flex;
+  gap:25px;
+  font-size:13px;
+  color:#bbb;
 }
 
-.hero h1 {
-    font-size: clamp(45px, 10vw, 95px);
-    letter-spacing: 8px;
-    font-weight: 900;
+.navlinks a:hover{
+  color:white;
 }
 
-.hero h1 span {
-    color: #888;
+.hero{
+  min-height:92vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:50px 20px;
+  background:
+  radial-gradient(circle at center,#1b1b1b 0%,#080808 45%,#000 100%);
+  position:relative;
+  overflow:hidden;
 }
 
-.hero p {
-    color: #aaa;
-    letter-spacing: 3px;
-    margin-top: 20px;
-    font-size: 14px;
+.hero:before{
+  content:"";
+  position:absolute;
+  width:400px;
+  height:400px;
+  border:1px solid #333;
+  border-radius:50%;
+  opacity:.12;
+  animation:spin 30s linear infinite;
 }
 
-.btn {
-    display: inline-block;
-    padding: 14px 28px;
-    background: white;
-    color: black;
-    text-decoration: none;
-    font-weight: bold;
-    margin-top: 30px;
-    border-radius: 4px;
-    transition: 0.3s;
+.hero:after{
+  content:"";
+  position:absolute;
+  width:550px;
+  height:550px;
+  border:1px solid #555;
+  border-radius:50%;
+  opacity:.07;
+  animation:spin 45s linear infinite reverse;
 }
 
-.btn:hover {
-    background: #999;
+@keyframes spin{
+  to{transform:rotate(360deg);}
 }
 
-section {
-    padding: 75px 8%;
+.hero-content{
+  position:relative;
+  z-index:2;
 }
 
-.section-title {
-    text-align: center;
-    font-size: 32px;
-    letter-spacing: 4px;
-    margin-bottom: 15px;
+.smalltitle{
+  color:#999;
+  letter-spacing:7px;
+  font-size:12px;
+  margin-bottom:25px;
 }
 
-.subtitle {
-    text-align: center;
-    color: #888;
-    margin-bottom: 45px;
+.hero h1{
+  font-size:clamp(45px,10vw,100px);
+  font-weight:900;
+  letter-spacing:8px;
+  line-height:1;
+  background:linear-gradient(180deg,#fff,#888,#444);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
 }
 
-.about {
-    text-align: center;
-    max-width: 800px;
-    margin: auto;
-    color: #bbb;
-    line-height: 1.9;
+.hero h2{
+  margin-top:25px;
+  font-size:clamp(15px,4vw,25px);
+  letter-spacing:5px;
+  color:#c5c5c5;
 }
 
-.services {
-    background: #0b0b0b;
+.hero p{
+  max-width:550px;
+  margin:20px auto;
+  color:#888;
+  line-height:1.8;
 }
 
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 20px;
+.btn{
+  display:inline-block;
+  margin-top:20px;
+  padding:15px 28px;
+  border:1px solid #ddd;
+  background:#fff;
+  color:#000;
+  font-weight:bold;
+  font-size:13px;
+  letter-spacing:1px;
+  transition:.3s;
 }
 
-.card {
-    background: #111;
-    border: 1px solid #292929;
-    padding: 30px 22px;
-    border-radius: 8px;
-    transition: 0.3s;
+.btn:hover{
+  background:#111;
+  color:white;
+  border-color:#777;
+  transform:translateY(-3px);
 }
 
-.card:hover {
-    border-color: #888;
-    transform: translateY(-5px);
+.btn2{
+  background:transparent;
+  color:#fff;
+  border:1px solid #444;
+  margin-left:10px;
 }
 
-.card h3 {
-    margin-bottom: 15px;
-    letter-spacing: 1px;
+section{
+  padding:90px 7%;
 }
 
-.card p {
-    color: #888;
-    font-size: 14px;
-    line-height: 1.7;
+.section-head{
+  text-align:center;
+  margin-bottom:50px;
 }
 
-.number {
-    font-size: 30px;
-    color: #777;
-    margin-bottom: 15px;
+.section-head small{
+  color:#888;
+  letter-spacing:5px;
 }
 
-.work-card {
-    background: linear-gradient(145deg, #202020, #080808);
-    min-height: 180px;
-    border: 1px solid #252525;
-    border-radius: 8px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 25px;
+.section-head h2{
+  font-size:36px;
+  margin-top:15px;
+  letter-spacing:3px;
 }
 
-.work-card h3 {
-    letter-spacing: 2px;
-    margin-bottom: 12px;
+.section-head p{
+  color:#888;
+  margin-top:15px;
+  line-height:1.7;
 }
 
-.work-card p {
-    color: #888;
-    font-size: 13px;
+.about{
+  background:#080808;
+  text-align:center;
 }
 
-.packages {
-    background: #0b0b0b;
+.about-box{
+  max-width:850px;
+  margin:auto;
+  border:1px solid #222;
+  background:linear-gradient(145deg,#101010,#060606);
+  padding:45px 30px;
 }
 
-.price {
-    font-size: 32px;
-    margin: 20px 0;
-    color: white;
+.about-box h3{
+  font-size:28px;
+  letter-spacing:3px;
+  margin-bottom:20px;
 }
 
-.price span {
-    color: #777;
-    font-size: 14px;
+.about-box p{
+  color:#aaa;
+  line-height:2;
 }
 
-.card ul {
-    list-style: none;
-    color: #aaa;
-    line-height: 2.2;
-    font-size: 14px;
+.founder{
+  margin-top:30px;
+  padding-top:25px;
+  border-top:1px solid #222;
 }
 
-.booking {
-    max-width: 600px;
-    margin: auto;
+.founder h3{
+  font-size:23px;
+  color:#fff;
 }
 
-input, textarea, select {
-    width: 100%;
-    padding: 15px;
-    margin-bottom: 15px;
-    background: #111;
-    border: 1px solid #333;
-    color: white;
-    border-radius: 5px;
-    font-size: 15px;
+.founder p{
+  color:#999;
+  margin-top:10px;
+  letter-spacing:2px;
 }
 
-textarea {
-    min-height: 120px;
-    resize: vertical;
+.services{
+  background:#050505;
 }
 
-.submit {
-    width: 100%;
-    padding: 16px;
-    background: white;
-    color: black;
-    border: none;
-    border-radius: 5px;
-    font-weight: bold;
-    font-size: 16px;
-    cursor: pointer;
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
 }
 
-footer {
-    text-align: center;
-    padding: 35px 20px;
-    background: #080808;
-    border-top: 1px solid #222;
+.card{
+  background:linear-gradient(145deg,#121212,#080808);
+  border:1px solid #222;
+  padding:30px;
+  transition:.35s;
 }
 
-footer p {
-    color: #777;
-    font-size: 13px;
-    margin-top: 10px;
+.card:hover{
+  transform:translateY(-7px);
+  border-color:#777;
+  box-shadow:0 15px 40px rgba(255,255,255,.04);
 }
 
-.social {
-    margin-top: 20px;
+.card .number{
+  color:#666;
+  font-size:13px;
+  letter-spacing:3px;
 }
 
-.social a {
-    color: #ccc;
-    text-decoration: none;
-    margin: 10px;
+.card h3{
+  font-size:20px;
+  margin:20px 0;
 }
 
-@media(max-width:600px) {
-    nav {
-        padding: 18px;
-    }
-
-    .logo {
-        font-size: 17px;
-        letter-spacing: 2px;
-    }
-
-    section {
-        padding: 55px 6%;
-    }
-
-    .hero h1 {
-        letter-spacing: 4px;
-    }
+.card p{
+  color:#888;
+  line-height:1.8;
+  font-size:14px;
 }
+
+.work{
+  background:#090909;
+}
+
+.work-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:20px;
+}
+
+.work-box{
+  min-height:240px;
+  border:1px solid #252525;
+  background:radial-gradient(circle,#1b1b1b,#080808);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:30px;
+  transition:.3s;
+}
+
+.work-box:hover{
+  border-color:#888;
+  background:radial-gradient(circle,#222,#080808);
+}
+
+.work-box h3{
+  font-size:22px;
+  letter-spacing:2px;
+}
+
+.work-box p{
+  color:#888;
+  margin-top:12px;
+  font-size:13px;
+  line-height:1.7;
+}
+
+.pricing{
+  background:#050505;
+}
+
+.price-card{
+  border:1px solid #303030;
+  background:linear-gradient(160deg,#141414,#070707);
+  padding:35px 25px;
+  text-align:center;
+}
+
+.price-card.featured{
+  border-color:#aaa;
+  box-shadow:0 0 30px rgba(255,255,255,.05);
+}
+
+.price-card h3{
+  letter-spacing:3px;
+}
+
+.price{
+  font-size:38px;
+  font-weight:bold;
+  margin:25px 0;
+}
+
+.price span{
+  font-size:14px;
+  color:#888;
+}
+
+.price-card ul{
+  list-style:none;
+  color:#aaa;
+  line-height:2.5;
+  font-size:14px;
+}
+
+.price-card .btn{
+  width:100%;
+}
+
+.booking{
+  background:#090909;
+}
+
+.booking-container{
+  max-width:700px;
+  margin:auto;
+  padding:35px;
+  background:#101010;
+  border:1px solid #252525;
+}
+
+.booking-container input,
+.booking-container select,
+.booking-container textarea{
+  width:100%;
+  padding:15px;
+  margin-bottom:15px;
+  background:#080808;
+  border:1px solid #303030;
+  color:white;
+  font-size:14px;
+  outline:none;
+}
+
+.booking-container input:focus,
+.booking-container select:focus,
+.booking-container textarea:focus{
+  border-color:#aaa;
+}
+
+.booking-container textarea{
+  min-height:130px;
+  resize:vertical;
+}
+
+.booking-container button{
+  width:100%;
+  padding:16px;
+  background:white;
+  color:black;
+  border:0;
+  font-weight:bold;
+  letter-spacing:2px;
+  cursor:pointer;
+}
+
+.booking-container button:hover{
+  background:#bbb;
+}
+
+footer{
+  background:#030303;
+  border-top:1px solid #222;
+  text-align:center;
+  padding:50px 20px;
+}
+
+footer h2{
+  letter-spacing:5px;
+}
+
+footer p{
+  color:#888;
+  margin-top:15px;
+  line-height:1.8;
+}
+
+.social{
+  margin-top:25px;
+}
+
+.social a{
+  display:inline-block;
+  margin:8px;
+  padding:12px 20px;
+  border:1px solid #333;
+  font-size:13px;
+}
+
+.social a:hover{
+  background:white;
+  color:black;
+}
+
+.copyright{
+  margin-top:35px;
+  font-size:12px;
+  color:#555;
+}
+
+@media(max-width:750px){
+
+  nav{
+    padding:16px 5%;
+  }
+
+  .logo{
+    font-size:16px;
+    letter-spacing:2px;
+  }
+
+  .navlinks{
+    gap:12px;
+    font-size:11px;
+  }
+
+  .hero{
+    min-height:80vh;
+  }
+
+  .hero h1{
+    letter-spacing:4px;
+  }
+
+  .hero h2{
+    letter-spacing:2px;
+  }
+
+  section{
+    padding:65px 5%;
+  }
+
+  .grid{
+    grid-template-columns:1fr;
+  }
+
+  .work-grid{
+    grid-template-columns:1fr;
+  }
+
+  .section-head h2{
+    font-size:28px;
+  }
+
+  .about-box{
+    padding:30px 20px;
+  }
+
+  .booking-container{
+    padding:20px;
+  }
+}
+
 </style>
 </head>
 
 <body>
 
 <nav>
-    <div class="logo">PHANTOM <span>STUDIO</span></div>
-    <a href="#contact">CONTACT ↗</a>
+  <div class="logo">PHANTOM<span>.</span></div>
+
+  <div class="navlinks">
+    <a href="#services">Services</a>
+    <a href="#work">Portfolio</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#contact">Contact</a>
+  </div>
 </nav>
 
-<div class="hero">
-    <small>WELCOME TO THE CREATIVE WORLD</small>
+<!-- HERO -->
 
-    <h1>PHANTOM <span>STUDIO</span></h1>
+<header class="hero">
+  <div class="hero-content">
 
-    <p>YOUR VISION. OUR CREATION.</p>
+    <div class="smalltitle">CREATIVE DIGITAL STUDIO</div>
+
+    <h1>PHANTOM<br>STUDIO</h1>
+
+    <h2>YOUR VISION. OUR CREATION.</h2>
+
+    <p>
+      We transform ordinary footage into extraordinary visual experiences.
+      Editing, creativity and cinematic storytelling.
+    </p>
 
     <a href="#work" class="btn">EXPLORE OUR WORK</a>
-</div>
+    <a href="#contact" class="btn btn2">START A PROJECT</a>
 
-<section id="about">
-    <h2 class="section-title">ABOUT US</h2>
-    <p class="subtitle">CREATIVITY BEYOND LIMITS</p>
+  </div>
+</header>
 
-    <div class="about">
-        PHANTOM STUDIO is a creative editing studio focused on turning
-        ideas into powerful visual experiences. From cinematic video edits
-        to gaming montages, reels, logos and graphics, we bring your vision
-        to life with creativity, detail and style.
+<!-- ABOUT -->
+
+<section class="about" id="about">
+
+  <div class="section-head">
+    <small>WHO WE ARE</small>
+    <h2>ABOUT PHANTOM</h2>
+  </div>
+
+  <div class="about-box">
+
+    <h3>CREATIVITY WITHOUT LIMITS.</h3>
+
+    <p>
+      PHANTOM STUDIO is a creative editing studio focused on
+      cinematic video editing, gaming montages, social media reels,
+      graphics and visual branding.
+      Every project is crafted with creativity, detail and passion.
+    </p>
+
+    <div class="founder">
+      <h3>KARMESH</h3>
+      <p>FOUNDER & CREATIVE EDITOR</p>
+      <p>Turning ideas into visuals.</p>
     </div>
+
+  </div>
 </section>
 
-<section class="services">
-    <h2 class="section-title">OUR SERVICES</h2>
-    <p class="subtitle">CREATIVE SOLUTIONS FOR YOUR BRAND</p>
+<!-- SERVICES -->
 
-    <div class="grid">
+<section class="services" id="services">
 
-        <div class="card">
-            <div class="number">01</div>
-            <h3>VIDEO EDITING</h3>
-            <p>Cinematic editing, transitions, color grading and professional visual storytelling.</p>
-        </div>
+  <div class="section-head">
+    <small>WHAT WE CREATE</small>
+    <h2>OUR SERVICES</h2>
+    <p>Creative solutions. Premium visuals. Powerful storytelling.</p>
+  </div>
 
-        <div class="card">
-            <div class="number">02</div>
-            <h3>REELS & SHORTS</h3>
-            <p>Engaging Instagram Reels, YouTube Shorts and social media videos.</p>
-        </div>
+  <div class="grid">
 
-        <div class="card">
-            <div class="number">03</div>
-            <h3>GAMING MONTAGE</h3>
-            <p>Gaming highlights, beat sync, slow motion, effects and cinematic gameplay edits.</p>
-        </div>
-
-        <div class="card">
-            <div class="number">04</div>
-            <h3>GRAPHIC DESIGN</h3>
-            <p>Creative posters, thumbnails, banners and social media graphics.</p>
-        </div>
-
-        <div class="card">
-            <div class="number">05</div>
-            <h3>LOGO DESIGN</h3>
-            <p>Unique logo concepts and visual identities for creators and brands.</p>
-        </div>
-
-        <div class="card">
-            <div class="number">06</div>
-            <h3>CREATIVE ADS</h3>
-            <p>Promotional videos and creative advertising content for businesses.</p>
-        </div>
-
+    <div class="card">
+      <div class="number">01 / VIDEO</div>
+      <h3>Cinematic Video Editing</h3>
+      <p>Professional cuts, cinematic transitions, color grading,
+      sound design and visual storytelling.</p>
     </div>
+
+    <div class="card">
+      <div class="number">02 / SOCIAL</div>
+      <h3>Reels & Shorts</h3>
+      <p>Engaging short-form videos designed for Instagram,
+      YouTube Shorts and social media.</p>
+    </div>
+
+    <div class="card">
+      <div class="number">03 / GAMING</div>
+      <h3>Gaming Montages</h3>
+      <p>High-energy gaming edits, beat sync, slow motion,
+      effects and cinematic gameplay moments.</p>
+    </div>
+
+    <div class="card">
+      <div class="number">04 / DESIGN</div>
+      <h3>Graphic Design</h3>
+      <p>Posters, thumbnails, promotional creatives,
+      social media designs and visual content.</p>
+    </div>
+
+    <div class="card">
+      <div class="number">05 / BRAND</div>
+      <h3>Logo Design</h3>
+      <p>Unique logos and brand visuals to give your business
+      a recognizable identity.</p>
+    </div>
+
+    <div class="card">
+      <div class="number">06 / CREATIVE</div>
+      <h3>Creative Advertisements</h3>
+      <p>Modern promotional videos and creative advertising
+      for businesses, products and brands.</p>
+    </div>
+
+  </div>
 </section>
 
-<section id="work">
-    <h2 class="section-title">SELECTED WORK</h2>
-    <p class="subtitle">CREATIVE PROJECTS & PERSONAL SHOWREELS</p>
+<!-- PORTFOLIO -->
 
-    <div class="grid">
+<section class="work" id="work">
 
-        <div class="work-card">
-            <h3>GAMING EDITS</h3>
-            <p>Gameplay • Slow Motion • Cinematic Effects</p>
-        </div>
+  <div class="section-head">
+    <small>SELECTED CREATIVE WORK</small>
+    <h2>OUR PORTFOLIO</h2>
+    <p>Creative projects and editing samples by PHANTOM STUDIO.</p>
+  </div>
 
-        <div class="work-card">
-            <h3>CINEMATIC VIDEO</h3>
-            <p>Visual Storytelling • Color • Transitions</p>
-        </div>
+  <div class="work-grid">
 
-        <div class="work-card">
-            <h3>GRAPHIC DESIGN</h3>
-            <p>Posters • Thumbnails • Branding</p>
-        </div>
-
+    <div class="work-box">
+      <div>
+        <h3>GAMING MONTAGE</h3>
+        <p>Slow Motion • Beat Sync • Cinematic Effects</p>
+      </div>
     </div>
+
+    <div class="work-box">
+      <div>
+        <h3>CINEMATIC EDIT</h3>
+        <p>Transitions • Color • Storytelling</p>
+      </div>
+    </div>
+
+    <div class="work-box">
+      <div>
+        <h3>REELS & SHORTS</h3>
+        <p>Social Media • Creative Cuts • Motion</p>
+      </div>
+    </div>
+
+    <div class="work-box">
+      <div>
+        <h3>GRAPHIC DESIGN</h3>
+        <p>Posters • Thumbnails • Branding</p>
+      </div>
+    </div>
+
+  </div>
 </section>
 
-<section class="packages">
-    <h2 class="section-title">OUR PACKAGES</h2>
-    <p class="subtitle">SIMPLE • CREATIVE • PROFESSIONAL</p>
+<!-- PRICING -->
 
-    <div class="grid">
+<section class="pricing" id="pricing">
 
-        <div class="card">
-            <h3>STARTER REEL</h3>
-            <div class="price">₹299</div>
-            <ul>
-                <li>✓ Basic video editing</li>
-                <li>✓ Music synchronization</li>
-                <li>✓ Transitions</li>
-                <li>✓ 1 Revision</li>
-            </ul>
-        </div>
+  <div class="section-head">
+    <small>OUR STARTING RATES</small>
+    <h2>CREATIVE PACKAGES</h2>
+    <p>Choose your editing style and bring your vision to life.</p>
+  </div>
 
-        <div class="card">
-            <h3>CINEMATIC EDIT</h3>
-            <div class="price">₹499</div>
-            <ul>
-                <li>✓ Cinematic editing</li>
-                <li>✓ Color enhancement</li>
-                <li>✓ Premium transitions</li>
-                <li>✓ 1 Revision</li>
-            </ul>
-        </div>
+  <div class="grid">
 
-        <div class="card">
-            <h3>ADVANCED EDIT</h3>
-            <div class="price">₹699</div>
-            <ul>
-                <li>✓ Advanced effects</li>
-                <li>✓ Motion & animation</li>
-                <li>✓ Cinematic color grading</li>
-                <li>✓ 2 Revisions</li>
-            </ul>
-        </div>
-
+    <div class="price-card">
+      <h3>STARTER EDIT</h3>
+      <div class="price">₹299</div>
+      <ul>
+        <li>Basic Professional Editing</li>
+        <li>Clean Cuts & Transitions</li>
+        <li>Music Sync</li>
+        <li>Social Media Ready</li>
+      </ul>
+      <a href="#contact" class="btn">BOOK NOW</a>
     </div>
+
+    <div class="price-card featured">
+      <h3>CINEMATIC EDIT</h3>
+      <div class="price">₹499</div>
+      <ul>
+        <li>Premium Video Editing</li>
+        <li>Color Enhancement</li>
+        <li>Effects & Transitions</li>
+        <li>Music & Beat Sync</li>
+      </ul>
+      <a href="#contact" class="btn">BOOK NOW</a>
+    </div>
+
+    <div class="price-card">
+      <h3>ADVANCED EDIT</h3>
+      <div class="price">₹699</div>
+      <ul>
+        <li>Advanced Effects</li>
+        <li>Motion & Animation</li>
+        <li>Cinematic Color Grading</li>
+        <li>2 Revisions</li>
+      </ul>
+      <a href="#contact" class="btn">BOOK NOW</a>
+    </div>
+
+  </div>
 </section>
 
-<section id="contact">
-    <h2 class="section-title">LET'S CREATE</h2>
-    <p class="subtitle">HAVE A PROJECT IN MIND? LET'S MAKE IT REAL.</p>
+<!-- CONTACT -->
 
-    <div class="booking">
-        <form id="bookingForm">
+<section class="booking" id="contact">
 
-            <input type="text" id="name" placeholder="Your Name" required>
+  <div class="section-head">
+    <small>LET'S CREATE SOMETHING GREAT</small>
+    <h2>START YOUR PROJECT</h2>
+    <p>Tell us about your idea. Let's turn it into reality.</p>
+  </div>
 
-            <input type="text" id="project" placeholder="Project Type (Video, Logo, Reel)" required>
+  <div class="booking-container">
 
-            <select id="budget" required>
-                <option value="">Select Your Budget</option>
-                <option>₹299 - ₹500</option>
-                <option>₹500 - ₹1000</option>
-                <option>₹1000 - ₹3000</option>
-                <option>Custom Budget</option>
-            </select>
+    <form id="bookingForm">
 
-            <textarea id="details" placeholder="Tell us about your project..." required></textarea>
+      <input type="text" id="name"
+      placeholder="Your Name" required>
 
-            <button class="submit" type="submit">SEND PROJECT REQUEST</button>
+      <input type="text" id="project"
+      placeholder="Project Type (Video, Logo, Reel, etc.)" required>
 
-        </form>
-    </div>
+      <select id="budget" required>
+        <option value="">Select Your Budget</option>
+        <option>₹299 - ₹500</option>
+        <option>₹500 - ₹1000</option>
+        <option>₹1000 - ₹3000</option>
+        <option>Custom Budget</option>
+      </select>
+
+      <textarea id="details"
+      placeholder="Tell us about your project..." required></textarea>
+
+      <button type="submit">SEND PROJECT REQUEST</button>
+
+    </form>
+
+  </div>
 </section>
+
+<!-- FOOTER -->
 
 <footer>
-    <h3>PHANTOM STUDIO</h3>
-    <p>YOUR VISION. OUR CREATION.</p>
 
-    <div class="social">
-        <a href="https://www.instagram.com/phantomedit7026/" target="_blank">INSTAGRAM</a>
-        <a href="https://wa.me/917724859140" target="_blank">WHATSAPP</a>
-    </div>
+  <h2>PHANTOM STUDIO</h2>
 
-    <p>© 2026 PHANTOM STUDIO | ALL RIGHTS RESERVED</p>
+  <p>YOUR VISION. OUR CREATION.</p>
+
+  <p>Founder & Creative Editor: Karmesh</p>
+
+  <div class="social">
+
+    <a href="https://www.instagram.com/phantomedit7026/"
+    target="_blank">INSTAGRAM</a>
+
+    <a href="https://wa.me/917724859140"
+    target="_blank">WHATSAPP</a>
+
+  </div>
+
+  <p class="copyright">
+    © 2026 PHANTOM STUDIO | ALL RIGHTS RESERVED
+  </p>
+
 </footer>
 
 <script>
-document.getElementById("bookingForm").addEventListener("submit", function(e) {
 
-    e.preventDefault();
+document.getElementById("bookingForm").addEventListener("submit",function(e){
 
-    const name = document.getElementById("name").value;
-    const project = document.getElementById("project").value;
-    const budget = document.getElementById("budget").value;
-    const details = document.getElementById("details").value;
+  e.preventDefault();
 
-    const message =
-        "Hello PHANTOM STUDIO!%0A%0A" +
-        "Name: " + encodeURIComponent(name) + "%0A" +
-        "Project: " + encodeURIComponent(project) + "%0A" +
-        "Budget: " + encodeURIComponent(budget) + "%0A" +
-        "Details: " + encodeURIComponent(details);
+  const name=document.getElementById("name").value;
+  const project=document.getElementById("project").value;
+  const budget=document.getElementById("budget").value;
+  const details=document.getElementById("details").value;
 
-    window.open("https://wa.me/917724859140?text=" + message, "_blank");
+  const message=
+  "Hello PHANTOM STUDIO!%0A%0A"+
+  "Name: "+encodeURIComponent(name)+"%0A"+
+  "Project: "+encodeURIComponent(project)+"%0A"+
+  "Budget: "+encodeURIComponent(budget)+"%0A"+
+  "Details: "+encodeURIComponent(details);
+
+  window.open("https://wa.me/917724859140?text="+message,"_blank");
+
 });
+
 </script>
 
 </body>
