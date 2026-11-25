@@ -1,0 +1,489 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PHANTOM STUDIO | Creative Editing</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #050505;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 7%;
+    border-bottom: 1px solid #222;
+    background: #080808;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+    letter-spacing: 4px;
+}
+
+.logo span {
+    color: #999;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.hero {
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 30px 20px;
+    background: radial-gradient(circle, #252525 0%, #050505 65%);
+}
+
+.hero small {
+    color: #aaa;
+    letter-spacing: 5px;
+    margin-bottom: 20px;
+}
+
+.hero h1 {
+    font-size: clamp(45px, 10vw, 95px);
+    letter-spacing: 8px;
+    font-weight: 900;
+}
+
+.hero h1 span {
+    color: #888;
+}
+
+.hero p {
+    color: #aaa;
+    letter-spacing: 3px;
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 14px 28px;
+    background: white;
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 30px;
+    border-radius: 4px;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #999;
+}
+
+section {
+    padding: 75px 8%;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 32px;
+    letter-spacing: 4px;
+    margin-bottom: 15px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #888;
+    margin-bottom: 45px;
+}
+
+.about {
+    text-align: center;
+    max-width: 800px;
+    margin: auto;
+    color: #bbb;
+    line-height: 1.9;
+}
+
+.services {
+    background: #0b0b0b;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: #111;
+    border: 1px solid #292929;
+    padding: 30px 22px;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.card:hover {
+    border-color: #888;
+    transform: translateY(-5px);
+}
+
+.card h3 {
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+}
+
+.card p {
+    color: #888;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.number {
+    font-size: 30px;
+    color: #777;
+    margin-bottom: 15px;
+}
+
+.work-card {
+    background: linear-gradient(145deg, #202020, #080808);
+    min-height: 180px;
+    border: 1px solid #252525;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 25px;
+}
+
+.work-card h3 {
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+}
+
+.work-card p {
+    color: #888;
+    font-size: 13px;
+}
+
+.packages {
+    background: #0b0b0b;
+}
+
+.price {
+    font-size: 32px;
+    margin: 20px 0;
+    color: white;
+}
+
+.price span {
+    color: #777;
+    font-size: 14px;
+}
+
+.card ul {
+    list-style: none;
+    color: #aaa;
+    line-height: 2.2;
+    font-size: 14px;
+}
+
+.booking {
+    max-width: 600px;
+    margin: auto;
+}
+
+input, textarea, select {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 15px;
+    background: #111;
+    border: 1px solid #333;
+    color: white;
+    border-radius: 5px;
+    font-size: 15px;
+}
+
+textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.submit {
+    width: 100%;
+    padding: 16px;
+    background: white;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+footer {
+    text-align: center;
+    padding: 35px 20px;
+    background: #080808;
+    border-top: 1px solid #222;
+}
+
+footer p {
+    color: #777;
+    font-size: 13px;
+    margin-top: 10px;
+}
+
+.social {
+    margin-top: 20px;
+}
+
+.social a {
+    color: #ccc;
+    text-decoration: none;
+    margin: 10px;
+}
+
+@media(max-width:600px) {
+    nav {
+        padding: 18px;
+    }
+
+    .logo {
+        font-size: 17px;
+        letter-spacing: 2px;
+    }
+
+    section {
+        padding: 55px 6%;
+    }
+
+    .hero h1 {
+        letter-spacing: 4px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <div class="logo">PHANTOM <span>STUDIO</span></div>
+    <a href="#contact">CONTACT ↗</a>
+</nav>
+
+<div class="hero">
+    <small>WELCOME TO THE CREATIVE WORLD</small>
+
+    <h1>PHANTOM <span>STUDIO</span></h1>
+
+    <p>YOUR VISION. OUR CREATION.</p>
+
+    <a href="#work" class="btn">EXPLORE OUR WORK</a>
+</div>
+
+<section id="about">
+    <h2 class="section-title">ABOUT US</h2>
+    <p class="subtitle">CREATIVITY BEYOND LIMITS</p>
+
+    <div class="about">
+        PHANTOM STUDIO is a creative editing studio focused on turning
+        ideas into powerful visual experiences. From cinematic video edits
+        to gaming montages, reels, logos and graphics, we bring your vision
+        to life with creativity, detail and style.
+    </div>
+</section>
+
+<section class="services">
+    <h2 class="section-title">OUR SERVICES</h2>
+    <p class="subtitle">CREATIVE SOLUTIONS FOR YOUR BRAND</p>
+
+    <div class="grid">
+
+        <div class="card">
+            <div class="number">01</div>
+            <h3>VIDEO EDITING</h3>
+            <p>Cinematic editing, transitions, color grading and professional visual storytelling.</p>
+        </div>
+
+        <div class="card">
+            <div class="number">02</div>
+            <h3>REELS & SHORTS</h3>
+            <p>Engaging Instagram Reels, YouTube Shorts and social media videos.</p>
+        </div>
+
+        <div class="card">
+            <div class="number">03</div>
+            <h3>GAMING MONTAGE</h3>
+            <p>Gaming highlights, beat sync, slow motion, effects and cinematic gameplay edits.</p>
+        </div>
+
+        <div class="card">
+            <div class="number">04</div>
+            <h3>GRAPHIC DESIGN</h3>
+            <p>Creative posters, thumbnails, banners and social media graphics.</p>
+        </div>
+
+        <div class="card">
+            <div class="number">05</div>
+            <h3>LOGO DESIGN</h3>
+            <p>Unique logo concepts and visual identities for creators and brands.</p>
+        </div>
+
+        <div class="card">
+            <div class="number">06</div>
+            <h3>CREATIVE ADS</h3>
+            <p>Promotional videos and creative advertising content for businesses.</p>
+        </div>
+
+    </div>
+</section>
+
+<section id="work">
+    <h2 class="section-title">SELECTED WORK</h2>
+    <p class="subtitle">CREATIVE PROJECTS & PERSONAL SHOWREELS</p>
+
+    <div class="grid">
+
+        <div class="work-card">
+            <h3>GAMING EDITS</h3>
+            <p>Gameplay • Slow Motion • Cinematic Effects</p>
+        </div>
+
+        <div class="work-card">
+            <h3>CINEMATIC VIDEO</h3>
+            <p>Visual Storytelling • Color • Transitions</p>
+        </div>
+
+        <div class="work-card">
+            <h3>GRAPHIC DESIGN</h3>
+            <p>Posters • Thumbnails • Branding</p>
+        </div>
+
+    </div>
+</section>
+
+<section class="packages">
+    <h2 class="section-title">OUR PACKAGES</h2>
+    <p class="subtitle">SIMPLE • CREATIVE • PROFESSIONAL</p>
+
+    <div class="grid">
+
+        <div class="card">
+            <h3>STARTER REEL</h3>
+            <div class="price">₹299</div>
+            <ul>
+                <li>✓ Basic video editing</li>
+                <li>✓ Music synchronization</li>
+                <li>✓ Transitions</li>
+                <li>✓ 1 Revision</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>CINEMATIC EDIT</h3>
+            <div class="price">₹499</div>
+            <ul>
+                <li>✓ Cinematic editing</li>
+                <li>✓ Color enhancement</li>
+                <li>✓ Premium transitions</li>
+                <li>✓ 1 Revision</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>ADVANCED EDIT</h3>
+            <div class="price">₹699</div>
+            <ul>
+                <li>✓ Advanced effects</li>
+                <li>✓ Motion & animation</li>
+                <li>✓ Cinematic color grading</li>
+                <li>✓ 2 Revisions</li>
+            </ul>
+        </div>
+
+    </div>
+</section>
+
+<section id="contact">
+    <h2 class="section-title">LET'S CREATE</h2>
+    <p class="subtitle">HAVE A PROJECT IN MIND? LET'S MAKE IT REAL.</p>
+
+    <div class="booking">
+        <form id="bookingForm">
+
+            <input type="text" id="name" placeholder="Your Name" required>
+
+            <input type="text" id="project" placeholder="Project Type (Video, Logo, Reel)" required>
+
+            <select id="budget" required>
+                <option value="">Select Your Budget</option>
+                <option>₹299 - ₹500</option>
+                <option>₹500 - ₹1000</option>
+                <option>₹1000 - ₹3000</option>
+                <option>Custom Budget</option>
+            </select>
+
+            <textarea id="details" placeholder="Tell us about your project..." required></textarea>
+
+            <button class="submit" type="submit">SEND PROJECT REQUEST</button>
+
+        </form>
+    </div>
+</section>
+
+<footer>
+    <h3>PHANTOM STUDIO</h3>
+    <p>YOUR VISION. OUR CREATION.</p>
+
+    <div class="social">
+        <a href="https://www.instagram.com/phantomedit7026/" target="_blank">INSTAGRAM</a>
+        <a href="https://wa.me/917724859140" target="_blank">WHATSAPP</a>
+    </div>
+
+    <p>© 2026 PHANTOM STUDIO | ALL RIGHTS RESERVED</p>
+</footer>
+
+<script>
+document.getElementById("bookingForm").addEventListener("submit", function(e) {
+
+    e.preventDefault();
+
+    const name = document.getElementById("name").value;
+    const project = document.getElementById("project").value;
+    const budget = document.getElementById("budget").value;
+    const details = document.getElementById("details").value;
+
+    const message =
+        "Hello PHANTOM STUDIO!%0A%0A" +
+        "Name: " + encodeURIComponent(name) + "%0A" +
+        "Project: " + encodeURIComponent(project) + "%0A" +
+        "Budget: " + encodeURIComponent(budget) + "%0A" +
+        "Details: " + encodeURIComponent(details);
+
+    window.open("https://wa.me/917724859140?text=" + message, "_blank");
+});
+</script>
+
+</body>
+</html>
